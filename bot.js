@@ -22,18 +22,7 @@ client.on('message', message => {
     }
 });
 
-client.on("message", message => {
- if (message.content === "@رابط") {
-  const embed = new Discord.RichEmbed()
-      .setColor("RANDOM")
-      .setFooter('© Poly Bot :po: جميع الحقوق محفوظة 2018 لــبوت')
-      .addField('https://discord.gg/AscbZ3h `)
-  message.author.send({embed});
-
- }
-});
 
 
 
-
-client.login('token');
+client.login('token')
