@@ -177,10 +177,10 @@ const Za7f = [
   var embed = new Discord.RichEmbed()
   .setColor('RANDOM')
    .setThumbnail(message.author.avatarURL) 
- .addField('WOlF BOT' ,
+ .addField('Poly' ,
   `${Za7f[Math.floor(Math.random() * Za7f.length)]}`)
   message.channel.sendEmbed(embed);
-  console.log('oo: ' + message.author.username)
+  console.log('Poly: ' + message.author.username)
     }
 });
 
