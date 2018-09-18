@@ -239,4 +239,4 @@ message.channel.sendEmbed(cat);
     }
 });
 
-client.login('bot')
+client.login('token')
