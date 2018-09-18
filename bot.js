@@ -239,4 +239,4 @@ message.channel.sendEmbed(cat);
     }
 });
 
-client.login('NDc5OTc2NjIyNzEyMjkxMzI4.Dnqf3g.xEcAr-8zoB9UoPn-vhHBguwHVW4')
+client.login('bot')
