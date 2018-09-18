@@ -275,6 +275,34 @@ client.on('message', message => {
          
        
 });
+
+
+
+
+
+ 
+client.on('message', function(msg) {
+         var prefix = ""
+    if(msg.content.startsWith (prefix  + 'Poly')) {
+      let embed = new Discord.RichEmbed()
+      .setColor('RANDOM')
+      .setThumbnail(msg.guild.iconURL)
+      .setTitle(`Showing Details Of  **${msg.guild.name}*`)
+      .addField(':globe_with_meridians:** Server Type **',`[** __${msg.guild.region}__ **]`,true)
+      .addField(':medal:** Roles**',`[** __${msg.guild.roles.size}__ **]`,true)
+      .addField(':pencil:**Text Channel**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
+      .addField(':microphone:**Voice Channel **',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
+      .addField(':crown:**owner**',`**${msg.guild.owner}**`,true)
+      .addField(':id:**Server ID**',`**${msg.guild.id}**`,true)
+      msg.channel.send({embed:embed});
+    }
+  });
+ 
+ 
+ 
+ 
+ 
+ 
  
  
 
