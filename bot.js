@@ -317,4 +317,25 @@ client.on('message', message => {
  
 
 
+
+
+
+
+client.on('message', message => {
+    if (message.content === "الرتب") {
+        var roles = message.guild.roles.map(roles => `${roles.name}, `).join(' ')
+        const embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .addField('الرتب:',`**[${roles}]**`)
+        message.channel.sendEmbed(embed);
+    }
+});
+
+
+
+
+
+
+
+
 client.login(process.env.BOT_TOKEN);
