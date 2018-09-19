@@ -37,6 +37,21 @@ client.on("message", message => {
 
 
 
+
+client.on('message', message => {
+     if (message.content === "رابط") {
+     let embed = new Discord.RichEmbed()
+  .setAuthor(message.author.username)
+  .setColor("#9B59B6")
+  .addField(" Done | تــــم" , " |  تــــم ارســالك في الخــاص")
+     
+  message.channel.sendEmbed(embed);
+    }
+});
+
+
+
+
 const Sra7a = [
      'صراحه  |  صوتك حلوة؟',
      'صراحه  |  التقيت الناس مع وجوهين؟',
@@ -329,14 +344,6 @@ client.on('message', message => {
 });
 
 
-
-client.on('message', message => {
-     if (message.content === "رابط") {
-     let embed = new Discord.RichEmbed()
-  .setAuthor(message.author.username)
-  .setColor("#9B59B6")
-  .addField(" Done | تــــم" , " |  تــــم ارســالك في الخــاص")
-     
 
 
 
