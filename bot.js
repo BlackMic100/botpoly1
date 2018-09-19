@@ -330,7 +330,13 @@ client.on('message', message => {
 
 
 
-
+client.on('message', message => {
+     if (message.content === "رابط") {
+     let embed = new Discord.RichEmbed()
+  .setAuthor(message.author.username)
+  .setColor("#9B59B6")
+  .addField(" Done | تــــم" , " |  تــــم ارســالك في الخــاص")
+     
 
 
 
