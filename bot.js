@@ -321,16 +321,12 @@ client.on('message', message => {
 
 
 
-client.on('message', message => {
-    if (message.content === "الرتب") {
-        var roles = message.guild.roles.map(roles => `${roles.name}, `).join(' ')
-        const embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .addField('الرتب:',`**[${roles}]**`)
-        message.channel.sendEmbed(embed);
-    }
+ client.on('guildMemberAdd', member => {
+  const channel = member.guild.channels.find('name', 'welcome-ترحيب');
+  if (!channel) return;
+  channel.send(`***Poly بكل حب واحترام وشوق نستقبلك ونتمنى لك قضآء أجمل اللحظات ولآوقات معنا حياك الله في***, ${member}`);
+  
 });
-
 
 
 
