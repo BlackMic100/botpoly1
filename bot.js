@@ -378,4 +378,19 @@ message.author.sendEmbed(embed)
 }); 
 
 
+
+
+client.on('message', message => {
+     if (message.content === "اوامر") {
+     let embed = new Discord.RichEmbed()
+  .setAuthor(message.author.username)
+  .setColor("#9B59B6")
+  .addField(" Done ✅ | تــــم" , " |  تــــم ارســالك في الخــاص")
+     
+  message.channel.sendEmbed(embed);
+    }
+});
+
+
+
 client.login(process.env.BOT_TOKEN);
