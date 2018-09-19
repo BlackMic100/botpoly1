@@ -295,6 +295,7 @@ client.on('message', message => {
 
 
 
+
  
 client.on('message', function(msg) {
          var prefix = ""
@@ -345,6 +346,36 @@ client.on('message', message => {
 
 
 
+
+
+client.on("message", message => {
+ if (message.content === "اوامر") {
+  const embed = new Discord.RichEmbed() 
+      .setColor("#ffff00")
+      .setThumbnail(message.author.avatarURL)
+      .setDescription(`
+
+        ***__اوامر عامه __***
+ **       
+『رابط   / رابط الدسكورد 』
+『التاريخ  / التاريخ و الوقت』
+**
+           ***__العاب __***
+ **       
+『صراحه / لعبة صراحه』
+『مريم / لعبة مريم』
+『كت تويت / لعبة كت تويت』
+『عقاب / لعبة عقاب』
+『لو خيروك / لعبة لو خيروك』
+**
+        
+`)
+
+
+message.author.sendEmbed(embed)
+
+}
+}); 
 
 
 client.login(process.env.BOT_TOKEN);
