@@ -302,7 +302,17 @@ client.on('message', function(msg) {
  
  
  
- 
+client.on('message', message => {
+    var prefix = ""
+    if (message.content === prefix + "التاريخ") {
+        var currentTime = new Date(),
+            السنة = currentTime.getFullYear(),
+            الشهر = currentTime.getMonth() + 1,
+            اليوم = currentTime.getDate();
+        message.channel.sendMessage( "التاريخ : " + اليوم + "-" + الشهر + "-" +السنة)
+    }
+});
+
  
  
 
