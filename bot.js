@@ -370,22 +370,29 @@ client.on('message', message => {
 
 
 
-
-client.on('guildMemberAdd', member => {
-    const botCount = member.guild.members.filter(m=>m.user.bot).size
-    const memberCount = [member.guild.memberCount] - [botCount]
-    client.channels.get('492772435741900810').setName(`⟫『 ${memberCount} عدد الاعضاء 』⟪`);
-    client.channels.get('492772567602692103').setName(`⟫『 ${botCount} عدد البوتات 』⟪`);
+client.on('message', message => {
+    var command = message.content.split(" ")[0];
+    var prefix = '$'; // هنا تقدر تغير البرفكس
+    var args1 = message.content.split(" ").slice(1).join(" ");
+    if(command == prefix + 'find') { // الامر : $find
+        let sizePlayers = 1;
+        
+        if(message.author.bot) return;
+        if(!message.channel.guild) return;
+        if(!args1) return message.channel.send(`**➥ Useage:** ${prefix}find (اي حرف من الاسم الي تبيه)`).then(msg => msg.delete(5000));
+        
+        var playersFind = new Discord.RichEmbed()
+        .setTitle(`:white_check_mark: **كود البحث عن الاعضاء**`)
+        .setThumbnail(client.user.avatarURL)
+        .setDescription(`**\n➥ البحث عن الاعضاء الموجود بداخل اسمائهم:**\n " ${args1} "\n\n**➥ عدد الاعضاء:**\n " ${message.guild.members.filter(m=>m.user.username.toUpperCase().includes(args1.toUpperCase())).size} "\n\n\`\`\`════════════════════════════════════════════════════════════════════════════════════════\n\n${message.guild.members.filter(m=>m.user.username.toUpperCase().includes(args1.toUpperCase())).map(m=>sizePlayers++ + '. ' + m.user.tag).slice(0,20).join('\n') || 'لا يوجد اعضاء بهذه الاحرف'}\n\n════════════════════════════════════════════════════════════════════════════════════════\`\`\``)
+        .setColor('GRAY')
+        .setTimestamp()
+        .setFooter(message.author.tag, message.author.avatarURL)
+        
+        message.channel.send(playersFind);
+        message.delete();
+    }
 });
-
-client.on('guildMemberRemove', member => {
-    const botCount = member.guild.members.filter(m=>m.user.bot).size
-    const memberCount = [member.guild.memberCount] - [botCount]
-    client.channels.get('492772435741900810').setName(`⟫『 ${memberCount} عدد الاعضاء 』⟪`);
-    client.channels.get('492772567602692103').setName(`⟫『 ${botCount} عدد البوتات 』⟪`);
-});
-
-
 
 
 
