@@ -371,7 +371,7 @@ client.on('message', message => {
 
 
     client.on('guildMemberAdd', member => {
-        let channel = member.guild.channels.find('welcome-ترحيب', 'اسم الروم الي بيرحب فيه');
+        let channel = member.guild.channels.find('name', 'welcome-ترحيب');
         let memberavatar = member.user.avatarURL
           if (!channel) return;
         let embed = new Discord.RichEmbed()
@@ -402,7 +402,7 @@ client.on('message', message => {
             .setColor('RED')
             .setFooter(`==== نــتــمــنــآ لــكــم آســتــمـــتــآع ====`, 'https://cdn.discordapp.com/attachments/397818254439219217/399292026782351381/shy.png')
         
-        var channel =member.guild.channels.find('name', 'اسم الروم الي يقول فيه اذا حد غادر')
+        var channel =member.guild.channels.find('name', 'welcome-ترحيب')
         if (!channel) return;
         channel.send({embed : embed});
         })
