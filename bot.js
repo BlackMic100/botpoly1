@@ -23,31 +23,45 @@ client.on('message', message => {
 });
 
 
-client.on("message", message => {
- if (message.content === "رابط") {
-  const embed = new Discord.RichEmbed()
-      .setColor("RANDOM")
-      .setFooter('© Poly Bot:po: جميع الحقوق محفوظة 2018 لــبوت')  
-      .addField('هاذا هو الرابط', `  https://discord.gg/AscbZ3h `)
-  message.author.send({embed});
 
- }
-});
+
+
+
 
 
 
 
 
 client.on('message', message => {
-     if (message.content === "رابط") {
-     let embed = new Discord.RichEmbed()
-  .setAuthor(message.author.username)
-  .setColor("#9B59B6")
-  .addField(" Done | تــــم" , " |  تــــم ارســالك في الخــاص")
-     
-  message.channel.sendEmbed(embed);
+    if (message.content.startsWith("رابط")) {
+        if (message.author.bot) return
+        message.channel.createInvite({
+        thing: true,
+        maxUses: 5,
+        maxAge: 1,
+    }).then(invite =>
+      message.author.sendMessage(invite.url)
+    )
+    const embed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+          .setDescription(" تم ارسال الرابط في الخاص :link: ")
+           .setAuthor(client.user.username, client.user.avatarURL)
+                 .setAuthor(client.user.username, client.user.avatarURL)
+                .setFooter('طلب بواسطة: ' + message.author.tag)
+
+      message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
+              const Embed11 = new Discord.RichEmbed()
+        .setColor("RANDOM")
+
+    .setDescription(" مدة الرابط :  24 ساعه فقط  عدد استخدامات الرابط : 5 ")
+      message.author.sendEmbed(Embed11)
     }
 });
+
+
+
+
+
 
 
 
