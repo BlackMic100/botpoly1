@@ -369,7 +369,7 @@ client.on('message', message => {
 
  const fetch = require('snekfetch');
  client.on('message', message => {
-if (message.content.startsWith('*ask')) {
+if (message.content.startsWith('معلومات')) {
       let args = message.content.split(' ').slice(1).join(' ');
     const hexcols = [0xFFB6C1, 0x4C84C0, 0xAD1A2C, 0x20B046, 0xF2E807, 0xF207D1, 0xEE8419];
     if (!args) {
@@ -422,6 +422,8 @@ client.on("message", message => {
  **       
 『رابط   / رابط الدسكورد 』
 『التاريخ  / التاريخ و الوقت』
+『معلومات  / يعطيك معلومات عن اي شي 』
+
 **
            ***__العاب __***
  **       
