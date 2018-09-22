@@ -589,7 +589,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-if(message.content.startsWith("slots")) {
+if(message.content.startsWith("سلطة")) {
   let slot1 = ['🍏', '🍇', '🍒', '🍍', '🍅', '🍆', '🍑', '🍓'];
   let slots1 = `${slot1[Math.floor(Math.random() * slot1.length)]}`;
   let slots2 = `${slot1[Math.floor(Math.random() * slot1.length)]}`;
@@ -630,6 +630,8 @@ client.on("message", message => {
 『كت تويت / لعبة كت تويت』
 『عقاب / لعبة عقاب』
 『لو خيروك / لعبة لو خيروك』
+『سلطة / لعبة سلطة』
+
 **
         
 `)
