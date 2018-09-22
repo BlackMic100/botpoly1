@@ -611,7 +611,7 @@ if(message.content.startsWith("سلطة")) {
 
 
 client.on('message', message => {
-    if (message.content === "id") {
+    if (message.content === "معلوماتك") {
     let embed = new Discord.RichEmbed()
    .setColor("RANDOM")
    .setThumbnail(message.author.avatarURL)
@@ -673,7 +673,7 @@ client.on("message", message => {
  **       
 『رابط   / رابط الدسكورد 』
 『التاريخ  / التاريخ و الوقت』
-『maelumh  / يعطيك معلومه بلغه الانجلزيه 』
+『معلوماتك  / معلوماتك الشخصيه في الديسكورد 』
 
 **
            ***__العاب __***
