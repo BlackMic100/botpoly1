@@ -649,18 +649,25 @@ client.on('message', message => {
 
 
 
-const swearWords = ["كلب", "حمار", "كلزق", "خرا", "متخلف", "خسيس", "خنيث", "طيزك", "زب", "حيوان", "خرا عليك", "كل زج"]; 
-  if( swearWords.some(word => message.content.includes(word)) ) {
-    message.reply("مَّا يَلْفِظُ مِن قَوْلٍ إِلَّا لَدَيْهِ رَقِيبٌ عَتِيدٌ").then(sentMessage =>{
-      sentMessage.delete(20000)
+
+
+const shorten = require('isgd');
+client.on('message', message => {
+        var prefix = "#";
+
+ if (message.content.startsWith(prefix + 'short')) {
+    let args = message.content.split(" ").slice(1);
+  if (!args[0]) return message.channel.send('**Usage**: '+ prefix +'short <رابط>')
+  if (!args[1]) { 
+    shorten.shorten(args[0], function(res) {
+      if (res.startsWith('Error:')) return message.channel.send('**Usage**: '+ prefix +'short <link>');
+      message.channel.send(`اختصار الرابط:**<${res}>**`); 
     })
-    message.delete(3000)
-    client.channels.get('490151524870258688').send(message.author.toString() + "استخدم كلام لا يليق ~")
-  }
-});
-
-
-
+  } else { 
+    shorten.custom(args[0], args[1], function(res) { 
+      if (res.startsWith('Error:')) return message.channel.send(`اختصار الرابط:**${res}**`); 
+      message.channel.send(`اختصار الرابط:**<${res}>**`); 
+ })}}});
 
 
 
