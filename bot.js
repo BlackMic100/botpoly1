@@ -667,7 +667,8 @@ client.on('message', message => {
     shorten.custom(args[0], args[1], function(res) { 
       if (res.startsWith('Error:')) return message.channel.send(`اختصار الرابط:**${res}**`); 
       message.channel.send(`اختصار الرابط:**<${res}>**`); 
- })}}});
+}
+}); 
 
 
 
