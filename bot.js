@@ -649,19 +649,15 @@ client.on('message', message => {
 
 
 
-client.on('message', message => {//alpha codes
-    var prefix = "-";
-if (message.content.startsWith(prefix + 'tag')) {
-    let args = message.content.split(" ").slice(1);
-if(!args[0]) return message.reply('مرجو كتابة نص الدي تريد'); //alpha codes
- 
-    figlet(args.join(" "), (err, data) => {
-              message.channel.send("```" + data + "```") //alpha codes
-           })
-}
+const swearWords = ["كلب", "حمار", "كلزق", "خرا", "متخلف", "خسيس", "خنيث", "طيزك", "زب", "حيوان", "خرا عليك", "كل زج"]; 
+  if( swearWords.some(word => message.content.includes(word)) ) {
+    message.reply("مَّا يَلْفِظُ مِن قَوْلٍ إِلَّا لَدَيْهِ رَقِيبٌ عَتِيدٌ").then(sentMessage =>{
+      sentMessage.delete(20000)
+    })
+    message.delete(3000)
+    client.channels.get('490151524870258688').send(message.author.toString() + "استخدم كلام لا يليق ~")
+  }
 });
-
-
 
 
 
