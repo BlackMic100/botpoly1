@@ -649,67 +649,62 @@ client.on('message', message => {
 
 
 
-
-
-
-client.on("message", message => {
-    if (message.author.bot || !message.guild) return;
-    const prefix ="="
-    let score;
    
-    if (message.guild) {
-      score = client.getScore.get(message.author.id, message.guild.id);
-      if (!score) {
-        score = { id: `${message.guild.id}-${message.author.id}`, user: message.author.id, guild: message.guild.id, points: 0, level: 1 };
-      }
-      score.points++;
-      const curLevel = Math.floor(0.1 * Math.sqrt(score.points));
-      client.setScore.run(score);
+client.on("message", (message) => {
+    /// ALPHA CODES
+   if (message.content.startsWith("#ticket")) {     /// ALPHA CODES
+        const reason = message.content.split(" ").slice(1).join(" ");     /// ALPHA CODES
+        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
+        if (message.guild.channels.exists("name", "ticket-{message.author.id}" + message.author.id)) return message.channel.send(`You already have a ticket open.`);    /// ALPHA CODES
+        message.guild.createChannel(`ticket-${message.author.username}`, "text").then(c => {
+            let role = message.guild.roles.find("name", "Support Team");
+            let role2 = message.guild.roles.find("name", "@everyone");
+            c.overwritePermissions(role, {
+                SEND_MESSAGES: true,
+                READ_MESSAGES: true
+            });    /// ALPHA CODES
+            c.overwritePermissions(role2, {
+                SEND_MESSAGES: false,
+                READ_MESSAGES: false
+            });
+            c.overwritePermissions(message.author, {
+                SEND_MESSAGES: true,
+                READ_MESSAGES: true
+            });
+            message.channel.send(`:white_check_mark: Your ticket has been created, #${c.name}.`);
+            const embed = new Discord.RichEmbed()
+                .setColor(0xCF40FA)
+                .addField(`Hey ${message.author.username}!`, `Please try explain why you opened this ticket with as much detail as possible. Our **Support Staff** will be here soon to help.`)
+                .setTimestamp();
+            c.send({
+                embed: embed
+            });
+        }).catch(console.error); 
     }
-    if (message.content.indexOf(prefix) !== 0) return;
- 
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
- 
-    if(command === "points") {
-      return message.reply(`You currently have ${score.points} points and are level ${score.level}!`);
-    }
-   
-    if(command === "give") {
-      if(!message.author.id === message.guild.owner) return message.reply("You're not the boss of me, you can't do that!");
-      const user = message.mentions.users.first() || client.users.get(args[0]);
-      if(!user) return message.reply("You must mention someone or give their ID!");
-      const pointsToAdd = parseInt(args[1], 10);
-      if(!pointsToAdd) return message.reply("You didn't tell me how many points to give...");
-          let userscore = client.getScore.get(user.id, message.guild.id);      
-      if (!userscore) {
-        userscore = { id: `${message.guild.id}-${user.id}`, user: user.id, guild: message.guild.id, points: 0, level: 1 };
-      }
-      userscore.points += pointsToAdd;
-      let userLevel = Math.floor(0.1 * Math.sqrt(score.points));
-      userscore.level = userLevel;
-      client.setScore.run(userscore);
-   
-      return message.channel.send(`${user.tag} has received ${pointsToAdd} points and now stands at ${userscore.points} points.`);
-    }
-   
-    if(command === "leaderboard") {
-      const top10 = sql.prepare("SELECT * FROM scores WHERE guild = ? ORDER BY points DESC LIMIT 10;").all(message.guild.id);
-      const embed = new Discord.RichEmbed()
-        .setTitle("**TOP 10 TEXT** :speech_balloon:")
-        .setAuthor('📋 Guild Score Leaderboards', message.guild.iconURL)
-        .setColor(0x00AE86);
- 
-      for(const data of top10) {
-        embed.addField(client.users.get(data.user).tag, `XP: \`${data.points}\` | LVL: \`${data.level}\``);
-      }
-      return message.channel.send({embed});
-    }
-   
-  });
 
 
+  if (message.content.startsWith("#close")) {
+        if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
 
+        message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`#confirm\`. This will time out in 10 seconds and be cancelled.`)
+            .then((m) => {
+                message.channel.awaitMessages(response => response.content === '#confirm', {
+                        max: 1,
+                        time: 10000,
+                        errors: ['time'],
+                    })    /// ALPHA CODES
+                    .then((collected) => {
+                        message.channel.delete();
+                    })    /// ALPHA CODES
+                    .catch(() => {
+                        m.edit('Ticket close timed out, the ticket was not closed.').then(m2 => {
+                            m2.delete();
+                        }, 3000);
+                    });
+            });
+    }
+
+});
 
 
 
