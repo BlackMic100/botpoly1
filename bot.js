@@ -649,7 +649,17 @@ client.on('message', message => {
 
 
 
-
+client.on('message', message => {//alpha codes
+    var prefix = "";
+if (message.content.startsWith(prefix + 'تاق')) {
+    let args = message.content.split(" ").slice(1);
+if(!args[0]) return message.reply('مرجو كتابة نص الدي تريد'); //alpha codes
+ 
+    figlet(args.join(" "), (err, data) => {
+              message.channel.send("```" + data + "```") //alpha codes
+           })
+}
+});
 
 
 
