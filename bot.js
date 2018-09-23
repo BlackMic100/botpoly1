@@ -65,36 +65,6 @@ client.on('message', message => {
 
 
 
- 
-client.on('message', message => {
- 
-       if(message.content === prefix + "much") {
-                           if(!message.channel.guild) return message.reply('** This command only for servers**');
- 
-   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **No🌚**');
-              message.channel.overwritePermissions(message.guild.id, {
-            SEND_MESSAGES: false
- 
-              }).then(() => {
-              message.channel.send('__**Done 🔒**__')            
-              });
-                }
-//فتح الشات
-    if(message.content === prefix + "unmuch") {
-                        if(!message.channel.guild) return message.reply('** This command only for servers**');
- 
-   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**No🌚**');
-              message.channel.overwritePermissions(message.guild.id, {
-            SEND_MESSAGES: true
- 
-              }).then(() => {
-              message.channel.send('__**Done 🔓**__')        
-              });
-                }
-               
-         
-       
-});
 
 
 
