@@ -34,6 +34,11 @@ client.on('message', message => {
 
 
 
+client.on('ready', () => {
+     client.user.setActivity("اوامر",{type: 'WATCHING'})
+
+});
+
 
 
 
