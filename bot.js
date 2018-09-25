@@ -1164,7 +1164,7 @@ client.on('guildBanRemove', (guild, user) => {
 
 client.on('message', message => {
     
-if(message.content.split(' ')[0] == prefix + 'عني') {
+if(message.content.split(' ')[0] == prefix + 'id') {
 if(!message.channel.guild) return;
 
 let args = message.content.split(' ').slice(1).join(' ');
