@@ -947,41 +947,36 @@ message.channel.sendFile(canvas.toBuffer())
 
 
 
+lient.on('message', message => {
+
+    if (message.content === "+mutechannel") {
+                        if(!message.channel.guild) return message.reply(' This command only for servers');
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: false
+
+           }).then(() => {
+               message.reply("تم تقفيل الشات :white_check_mark: ")
+           });
+             }
+if (message.content === "+unmutechannel") {
+    if(!message.channel.guild) return message.reply(' This command only for servers');
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('ليس لديك صلاحيات');
+           message.channel.overwritePermissions(message.guild.id, {
+         SEND_MESSAGES: true
+
+           }).then(() => {
+               message.reply("تم فتح الشات:white_check_mark:")
+           });
+             }  
 
 
 
+})
 
-msg.channel.send(`${item.type}`).then(() => {
-        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
-        .then((collected) => {
-		message.channel.send(`${collected.first().author} ✅ **مبروك لقد كسبت نقطه
-لمعرفة نقطاك الرجاء كتابة !نقاطي**`);
-		console.log(`[Typing] ${collected.first().author} typed the word.`);
-			let userData = points[message.author.id];
-			userData.points++;
-          })
-          .catch(collected => {
-            message.channel.send(`:x: **خطأ حاول مرة اخرى**`);
-			console.log('[Typing] Error: No one type the word.');
-          })
-		})
-	})
-}
-});
-client.on('message', message => {
-if (message.content.startsWith(prefix + 'نقاطي')) {
-	if(!message.channel.guild) return
-	let userData = points[message.author.id];
-	let embed = new Discord.RichEmbed()
-    .setAuthor(`${message.author.tag}`, message.author.avatarURL)
-	.setColor('#000000')
-	.setDescription(`نقاطك: \`${userData.points}\``)
-	message.channel.sendEmbed(embed)
-  }
-  fs.writeFile("./json/awsmm.json", JSON.stringify(points), (err) => {
-    if (err) console.error(err)
-  })
-});
+
 
 
 client.login(process.env.BOT_TOKEN);
