@@ -748,7 +748,7 @@ client.on("ready", () => {
             name : "Voice Online : [" + ss+ "]"
         })
     });
-    client.user.setGame("Truth Server  ©", "https://twitch.tv/©");
+    client.user.setGame("Truth Server Poly ✌ ©", "https://twitch.tv/©");
 });
 
 
