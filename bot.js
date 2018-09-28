@@ -307,6 +307,32 @@ Dat = currentTime.getDate()
 
 
 
+const bannedwords = [
+    "كلب",
+    "حيوان",
+    "كل زق",
+    "عير في امك",
+    "عير فمك",
+	"انيك امه",
+	"انيك اختك",
+	"انيك اخته",
+	"الحس طيزي",
+	"عير فختك",
+	"عير في اختك",
+	"كل خرا انت",
+	"كل خرا",
+    "انيك امك"
+
+  ];
+
+client.on('message',  message => {
+  if(bannedwords.some(word => message.content.includes(word))) {
+    message.delete()
+    message.reply("  احترم نفسك ممنوع السب في سيرفرنا المره الثانيه ميوت ").then(msg => {msg.delete(5000)});;
+	let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted')
+  };
+});
+ 
 
 
 
