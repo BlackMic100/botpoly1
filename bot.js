@@ -949,20 +949,25 @@ message.channel.sendFile(canvas.toBuffer())
 
 
 
-client.on('message', async msg => {
-     client.snek = require('snekfetch');
-    var p = ""
-  if(msg.content.startsWith(p + "cmind")) {
-   let args = msg.content.split(' ').slice(1).join(' ');
 
- if(args.length < 1) return args.missing(msg, 'No text added', this.help);
-  msg.channel.startTyping();
-  const searchMessage = await msg.channel.send('🖌️Painting...');
-  const { body } = await client.snek.get(`https://nekobot.xyz/api/imagegen?type=changemymind&text=${encodeURIComponent(args)}`);
-  msg.channel.send({file: { attachment:body.message, name: 'changemymind.png'}}).then(()=> { searchMessage.delete(); msg.channel.stopTyping(); });
-};
+
+msg.channel.send(`${item.type}`).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
+        .then((collected) => {
+		message.channel.send(`${collected.first().author} ✅ **مبروك لقد كسبت نقطه
+لمعرفة نقطاك الرجاء كتابة !نقاطي**`);
+		console.log(`[Typing] ${collected.first().author} typed the word.`);
+			let userData = points[message.author.id];
+			userData.points++;
+          })
+          .catch(collected => {
+            message.channel.send(`:x: **خطأ حاول مرة اخرى**`);
+			console.log('[Typing] Error: No one type the word.');
+          })
+		})
+	})
+}
 });
-
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'نقاطي')) {
 	if(!message.channel.guild) return
