@@ -723,6 +723,33 @@ client.on('message', message => {
 
 
 
+var ss = 0;
+ 
+client.on('voiceStateUpdate', (o,n) => {
+    if (o.voiceChannel && !n.voiceChannel) {
+        ss-=1
+        n.guild.channels.get("490152953920094208").edit({
+            name : "Voice Online : [" + ss+ "]"
+        })
+    };
+    if (n.voiceChannel && !o.voiceChannel) {
+        ss+=1
+        n.guild.channels.get("490152953920094208").edit({
+            name : "Voice Online : [" + ss+ "]"
+        })
+    }
+})
+client.on("ready", () => {
+    client.guilds.get("445270097993662474").members.forEach(m => {
+        if (m.voiceChannel) {
+            ss+=1
+        };
+        client.channels.get("490152953920094208").edit({
+            name : "Voice Online : [" + ss+ "]"
+        })
+    });
+    client.user.setGame("Truth Server  ©", "https://twitch.tv/©");
+});
 
 
 
