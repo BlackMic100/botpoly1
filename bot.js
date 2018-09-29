@@ -355,6 +355,75 @@ client.on('message',  message => {
 
 
 
+const bannedwords = [
+"#color",
+"#colors",
+"#id",
+"#profile",
+"#rep",
+"#daily",
+"#credits",
+"#points",
+"#roll",
+"#short",
+"#unmute",
+"#points",
+"!#id",
+"#mute",
+"#server",
+"#roles",
+"#invite",
+"#ping",
+"#support",
+
+"رابط",
+"التاريخ",
+"عني",
+"معلوماتك",
+"لون",
+"صورتك",
+"صراحه",
+"مريم",
+"كت تويت",
+"عقاب",
+"لو خيروك",
+
+
+
+
+
+
+  ];
+
+client.on('message',  message => {
+  if(bannedwords.some(word => message.content.includes(word))) {
+    message.delete()
+    message.reply("  احترم نفسك ممنوع السب في سيرفرنا المره الثانيه ميوت ").then(msg => {msg.delete(5000)});;
+	let muteRole = client.guilds.get(message.guild.id).roles.find('name', 'Muted')
+  };
+});
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 client.on('message', message=> {
     if (message.author.bot) return;
     if (message.isMentioned(client.user))
