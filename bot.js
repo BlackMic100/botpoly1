@@ -365,7 +365,7 @@ client.on('message',  message => {
 
 
 client.on("message", async message => {
-    if (message.content.startsWith(prefix + "achieve")) {
+    if (message.content.startsWith(prefix + "رساله")) {
          var ids = [
             "20",
             "1",
@@ -734,6 +734,8 @@ client.on("message", message => {
 『 معلوماتك  / معلوماتك الشخصيه في الديسكورد 』
 『 لون  / إختر الون المناسب من 1الى50 』
 『 صورتك  / صورتك في الدسكورد 』
+『 رساله  / اكتب رساله وتجيك على شكل صوره بس انجلزي 』
+
 
 
 **
