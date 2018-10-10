@@ -927,7 +927,7 @@ if (message.content.startsWith(adminprefix + 'setT')) {
     message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`)
 }
 
-
+});
 
 
 
