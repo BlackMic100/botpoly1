@@ -881,6 +881,7 @@ client.on("message", message => {
 『 لون  / إختر الون المناسب من 1الى50 』
 『 صورتك  / صورتك في الدسكورد 』
 『 رساله  / اكتب رساله وتجيك على شكل صوره بس انجلزي 』
+『 بروفايل  / معلوماتك في الدسكورد 』
 
 
 
@@ -931,7 +932,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-    if(message.content == ('!profile')) {    
+    if(message.content == ('بروفايل')) {    
  
              if (message.channel.type === 'dm') return message.reply('This Command Is Not Avaible In Dm\'s :x:');   
             var Canvas = module.require('canvas');
