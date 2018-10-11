@@ -1056,7 +1056,7 @@ client.on('message', message => {
  }
  });
 
-
+//وضع صوره
   client.on('message', message => {
         if (message.content.startsWith(prefix + "delete world")) {
             let alpha = new Discord.RichEmbed()
@@ -1067,14 +1067,59 @@ client.on('message', message => {
     });
 
 
-    client.on('message', message => {
-        if (message.content.startsWith(prefix + "blow world")) {
-            let alpha = new Discord.RichEmbed()
-            .setColor("RANDOM")
-            .setImage(`https://i.imgur.com/C1FIPdf.gif`)
-          message.channel.sendEmbed(alpha);
-        }
-    });
+
+//اوامر الاداره
+
+client.on("message", async msg => {
+ 
+    if (msg.channel.type !== "text") return undefined;
+ 
+    //if (msg.auhtor.bot) return undefined;
+ 
+    var args = msg.content.split(" ")
+ 
+    var prefix = "!"
+ 
+  if (msg.content.toLowerCase().startsWith(prefix + "mute")) {
+ 
+      var mentions = msg.mentions.users.first() || msg.guild.members.get(args[1]);
+      var username = msg.guild.members.filter(m => m.user.username.toLowerCase().includes(args[1]))
+      if (!args[1]) return undefined;
+      if(!msg.guild.members.get(msg.author.id).hasPermission("MANAGE_MESSAGES")) return msg.channel.send("You lack permissions.")
+      if(!msg.guild.members.get(client.user.id).hasPermission("MANAGE_MESSAGES")) return msg.channel.send("I lack permissions.")
+      if(!mentions && username.size == 0) return msg.channel.send('I couldnt find the user');
+      if(!mentions && username.size > 1) return msg.channel.send(`I found too much members with **${args[1]}**`);
+      if(mentions) {
+      try {
+        await msg.guild.channels.forEach(c => {
+          c.overwritePermissions(mentions, {
+            SEND_MESSAGES: false,
+            ATTACH_FILES : false,
+            ADD_REACTIONS : false,
+          })
+        })
+        await msg.channel.send(`${mentions} muted ,-,`)
+      } catch (e) {
+        console.log(e.stack);
+      }
+      }
+    if (username.size == 1) {
+      try {
+        await msg.guild.channels.forEach(c => {
+          c.overwritePermissions(msg.guild.members.find(m => m.user.username.toLowerCase().includes(args[1])).id, {
+            SEND_MESSAGES: false,
+            ATTACH_FILES : false,
+            ADD_REACTIONS : false,
+          })
+        })
+        await msg.channel.send(`${msg.guild.members.find(m => m.user.username.toLowerCase().includes(args[1])).user.username} muted ,-,`)
+      } catch (e) {
+        console.log(e.stack);
+      }
+    }
+  }
+});
+
 
 
 client.login(process.env.BOT_TOKEN);
