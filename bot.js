@@ -59,18 +59,43 @@ client.on('message', msg => {//msg
 
 
 
-  client.on('message', async message => {
-if(message.author.bot) return;
-if (message.channel.guild) {
-if (message.content.startsWith(prefix + `بحث`)) {
-            const textQuery = message.content.split(' ').slice(1).join(' ');
-        const rebel = encode(message.content.split(' ').slice(1).join(' '));
-        const url = `https://lmgtfy.com/?q=${rebel}`;
 
-        if (!rebel) return message.channel.send(`من فضلك أكتب البحث , مثآل : \`${prefix}Lmgtfy How to create a Discord server\`.`);
-        else message.channel.send(`"${textQuery}"\n**<${url}>**`);
-}}});
-  
+
+
+
+
+
+  client.on('ready',async () => {
+setInterval(function(){
+var currentTime = new Date(),
+hours = currentTime.getHours() + 3 ,
+ReBeeL = currentTime.getMinutes(),
+ReBeeeL = currentTime.getSeconds(),
+Codes = currentTime.getFullYear(),
+CodeS = currentTime.getMonth() + 1,
+CoDeS = currentTime.getDate()
+if (ReBeeL < 10) {
+ReBeeL = "0" + ReBeeL;
+}
+var suffix = "AM";
+if (hours >= 12) {
+suffix = "PM";
+hours = hours - 12;
+}
+if (hours == 0) {
+hours = 12;
+}
+client.channels.find('id', '503969852462202880').setName(`Time - ${hours} : ${ReBeeL} : ${ReBeeeL} ${suffix}`) 
+client.channels.find('id', '503969547037048833').setName(`Date : ${Codes} - ${CodeS} - ${CoDeS}`)
+}, 1000);
+});
+
+
+
+
+
+
+
 
   client.on("message", msg => {
            var prefix = "";
