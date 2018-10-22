@@ -59,37 +59,17 @@ client.on('message', msg => {//msg
 
 
 
-client.on('message', message => {
-    let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
-    let args = messageArray.slice(0);
-    let coins = require("./coins.json");
-    
-  if(!coins[message.author.id]){
-    coins[message.author.id] = {
-      coins: 0
-    };
-  }
+  client.on('message', async message => {
+if(message.author.bot) return;
+if (message.channel.guild) {
+if (message.content.startsWith(prefix + `بحث`)) {
+            const textQuery = message.content.split(' ').slice(1).join(' ');
+        const rebel = encode(message.content.split(' ').slice(1).join(' '));
+        const url = `https://lmgtfy.com/?q=${rebel}`;
 
-  let coinAmt = Math.floor(Math.random() * 15) + 1;
-  let baseAmt = Math.floor(Math.random() * 15) + 1;
-  console.log(`${coinAmt} ; ${baseAmt}`);
-
-  if(coinAmt === baseAmt){
-    coins[message.author.id] = {
-      coins: coins[message.author.id].coins + coinAmt
-    };
-  fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
-    if (err) console.log(err)
-  });
-  let coinEmbed = new Discord.RichEmbed()
-  .setAuthor(message.author.username)
-  .setColor("#5074b3")
-  .addField("💸", `${coinAmt} coins added!`);
-
-  message.channel.send(coinEmbed).then(msg => {msg.delete(5000)});
-  }
-});
+        if (!rebel) return message.channel.send(`من فضلك أكتب البحث , مثآل : \`${prefix}Lmgtfy How to create a Discord server\`.`);
+        else message.channel.send(`"${textQuery}"\n**<${url}>**`);
+}}});
   
 
   client.on("message", msg => {
