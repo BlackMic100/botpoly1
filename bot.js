@@ -59,51 +59,38 @@ client.on('message', msg => {//msg
 
 
 
-  const Discord = require("discord.js");
-const fs = require("fs");
-let coins = require("../coins.json");
-
-module.exports.run = async (bot, message, args) => {
-  //!pay @isatisfied 59345
-
+client.on('message', message => {
+    let messageArray = message.content.split(" ");
+    let cmd = messageArray[0];
+    let args = messageArray.slice(0);
+    let coins = require("./coins.json");
+    
   if(!coins[message.author.id]){
-    return message.reply("You don't have any coins!")
-  }
-
-  let pUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-
-  if(!coins[pUser.id]){
-    coins[pUser.id] = {
+    coins[message.author.id] = {
       coins: 0
     };
   }
 
-  let pCoins = coins[pUser.id].coins;
-  let sCoins = coins[message.author.id].coins;
+  let coinAmt = Math.floor(Math.random() * 15) + 1;
+  let baseAmt = Math.floor(Math.random() * 15) + 1;
+  console.log(`${coinAmt} ; ${baseAmt}`);
 
-  if(sCoins < args[0]) return message.reply("Not enough coins there!");
-
-  coins[message.author.id] = {
-    coins: sCoins - parseInt(args[1])
-  };
-
-  coins[pUser.id] = {
-    coins: pCoins + parseInt(args[1])
-  };
-
-  message.channel.send(`${message.author} has given ${pUser} ${args[1]} coins.`);
-
+  if(coinAmt === baseAmt){
+    coins[message.author.id] = {
+      coins: coins[message.author.id].coins + coinAmt
+    };
   fs.writeFile("./coins.json", JSON.stringify(coins), (err) => {
-    if(err) cosole.log(err)
+    if (err) console.log(err)
   });
+  let coinEmbed = new Discord.RichEmbed()
+  .setAuthor(message.author.username)
+  .setColor("#5074b3")
+  .addField("💸", `${coinAmt} coins added!`);
 
-
-}
-
-module.exports.help = {
-  name: "pay"
-}
- 
+  message.channel.send(coinEmbed).then(msg => {msg.delete(5000)});
+  }
+});
+  
 
   client.on("message", msg => {
            var prefix = "";
