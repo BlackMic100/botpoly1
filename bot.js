@@ -889,8 +889,16 @@ if(command === `كلم`) {
 
 
 
-
-
+client.on('message', msg => {//حقوق الفا كودز || هاشم ♥ || Alpha Codes || All copyrights for me & Alpha Codes.
+   if(msg.content === "-الاذان السعودية") {
+var embed20 = new Discord.RichEmbed()
+.setTitle("🇸🇦 🕌 الاذان في السعودية 🕌 🇸🇦")
+.setImage("https://cdn.discordapp.com/attachments/499383925924429837/502484545556316174/unknown.png")
+msg.channel.sendEmbed(embed20).then(SA => {
+   SA.react('🇸🇦').then(() => SA.react('🇸🇦'))    
+})
+}                      
+ });//حقوق الفا كودز || هاشم ♥ || Alpha Codes || All copyrights for me & Alpha Codes.
 
 
 
