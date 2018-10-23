@@ -905,7 +905,17 @@ msg.channel.sendEmbed(embed20).then(SA => {
 
 
 
-
+client.on('message', msg => {//حقوق الفا كودز || هاشم ♥ || Alpha Codes || All copyrights for me & Alpha Codes.
+   if(msg.content === "-الاذان مصر") {
+var embed20 = new Discord.RichEmbed()
+.setTitle("🇪🇬 🕌 الاذان في مصر 🕌 🇪🇬")
+.setImage("https://cdn.discordapp.com/attachments/501948394286350356/502486345537683456/unknown.png")
+msg.channel.sendEmbed(embed20).then(M => {
+M.react('🇪🇬').then(() => M.react('🇪🇬'))
+})
+   }
+ });//حقوق الفا كودز || هاشم ♥ || Alpha Codes || All copyrights for me & Alpha Codes.
+ 
 
 
 
