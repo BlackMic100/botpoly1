@@ -102,8 +102,8 @@ hours = hours - 12;
 if (hours == 0) {
 hours = 12;
 }
-client.channels.find('id', '503969547037048833').setName(`Time - ${hours} : ${ReBeeL} : ${ReBeeeL} ${suffix}`) 
-client.channels.find('id', '503969852462202880').setName(`Date : ${Codes} - ${CodeS} - ${CoDeS}`)
+client.channels.find('id', '504694668009930753').setName(`Time - ${hours} : ${ReBeeL} : ${ReBeeeL} ${suffix}`) 
+client.channels.find('id', '504694912105840670').setName(`Date : ${Codes} - ${CodeS} - ${CoDeS}`)
 }, 1000);
 });
 
