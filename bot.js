@@ -88,23 +88,6 @@ client.channels.find('id', '503991267873652736').setName("Welcome To hero");
 
 
 
-client.on("ready", async  => {
-setInterval(function(){
-client.channels.find('id', '504333454192803860').setName("N");
-client.channels.find('id', '504333454192803860').setName("No");
-client.channels.find('id', '504333454192803860').setName("Noo");
-client.channels.find('id', '504333454192803860').setName("NooB");
-client.channels.find('id', '504333454192803860').setName("NooBs");
-client.channels.find('id', '504333454192803860').setName("NooBs P");
-client.channels.find('id', '504333454192803860').setName("NooBs Pr");
-client.channels.find('id', '504333454192803860').setName("NooBs PrO");
-client.channels.find('id', '504333454192803860').setName("NooBs PrOs");
-client.channels.find('id', '504333454192803860').setName("NooBs PrOs");
-  }, 3000);
-});
-
-
-
 
 
 
