@@ -108,6 +108,37 @@ client.channels.find('id', '504694912105840670').setName(`Date : ${Codes} - ${Co
 });
 
 
+
+
+
+
+
+client.on("ready", async  => {
+setInterval(function(){
+client.channels.find('id', '504701447212892175').setName("W");
+client.channels.find('id', '504701447212892175').setName("We");
+client.channels.find('id', '504701447212892175').setName("Wel");
+client.channels.find('id', '504701447212892175').setName("Welc");
+client.channels.find('id', '504701447212892175').setName("Welco");
+client.channels.find('id', '504701447212892175').setName("Welcom");
+client.channels.find('id', '504701447212892175').setName("Welcome");
+client.channels.find('id', '504701447212892175').setName("Welcome T");
+client.channels.find('id', '504701447212892175').setName("Welcome To");
+client.channels.find('id', '504701447212892175').setName("Welcome To H");
+client.channels.find('id', '504701447212892175').setName("Welcome To he");
+client.channels.find('id', '504701447212892175').setName("Welcome To her");
+client.channels.find('id', '504701447212892175').setName("Welcome To hero");
+client.channels.find('id', '504701447212892175').setName("Welcome To hero");
+  }, 3000);
+});
+
+
+
+
+
+
+
+
 //ho
 
    client.on('ready',async () => {
