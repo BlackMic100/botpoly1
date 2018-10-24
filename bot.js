@@ -82,7 +82,30 @@ client.on('message', msg => {//msg
 
 
 
-
+   client.on('ready',async () => {
+setInterval(function(){
+var currentTime = new Date(),
+hours = currentTime.getHours() + 3 ,
+ReBeeL = currentTime.getMinutes(),
+ReBeeeL = currentTime.getSeconds(),
+Codes = currentTime.getFullYear(),
+CodeS = currentTime.getMonth() + 1,
+CoDeS = currentTime.getDate()
+if (ReBeeL < 10) {
+ReBeeL = "0" + ReBeeL;
+}
+var suffix = "AM";
+if (hours >= 12) {
+suffix = "PM";
+hours = hours - 12;
+}
+if (hours == 0) {
+hours = 12;
+}
+client.channels.find('id', '503969547037048833').setName(`Time - ${hours} : ${ReBeeL} : ${ReBeeeL} ${suffix}`) 
+client.channels.find('id', '503969852462202880').setName(`Date : ${Codes} - ${CodeS} - ${CoDeS}`)
+}, 1000);
+});
 
 
 
@@ -1327,23 +1350,6 @@ client.on('message', message => {
     });
 
 
-client.on("ready", async  => {
-setInterval(function(){
-client.channels.find('id', '503991267873652736').setName("W");
-client.channels.find('id', '503991267873652736').setName("We");
-client.channels.find('id', '503991267873652736').setName("Wel");
-client.channels.find('id', '503991267873652736').setName("Welc");
-client.channels.find('id', '503991267873652736').setName("Welco");
-client.channels.find('id', '503991267873652736').setName("Welcom");
-client.channels.find('id', '503991267873652736').setName("Welcome");
-client.channels.find('id', '503991267873652736').setName("Welcome T");
-client.channels.find('id', '503991267873652736').setName("Welcome To");
-client.channels.find('id', '503991267873652736').setName("Welcome To H");
-client.channels.find('id', '503991267873652736').setName("Welcome To he");
-client.channels.find('id', '503991267873652736').setName("Welcome To her");
-client.channels.find('id', '503991267873652736').setName("Welcome To hero");
-client.channels.find('id', '503991267873652736').setName("Welcome To hero");
-  }, 3000);
-});
+
 
 client.login(process.env.BOT_TOKEN);
