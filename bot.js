@@ -61,32 +61,31 @@ client.on('message', msg => {//msg
 
 
 
+
+
+
+
+
+
+
 client.on("ready", async  => {
 setInterval(function(){
-client.channels.find('id', '503991267873652736').setName("W");
-client.channels.find('id', '503991267873652736').setName("We");
-client.channels.find('id', '503991267873652736').setName("Wel");
-client.channels.find('id', '503991267873652736').setName("Welc");
-client.channels.find('id', '503991267873652736').setName("Welco");
-client.channels.find('id', '503991267873652736').setName("Welcom");
-client.channels.find('id', '503991267873652736').setName("Welcome");
-client.channels.find('id', '503991267873652736').setName("Welcome T");
-client.channels.find('id', '503991267873652736').setName("Welcome To");
-client.channels.find('id', '503991267873652736').setName("Welcome To H");
-client.channels.find('id', '503991267873652736').setName("Welcome To he");
-client.channels.find('id', '503991267873652736').setName("Welcome To her");
-client.channels.find('id', '503991267873652736').setName("Welcome To hero");
-client.channels.find('id', '503991267873652736').setName("Welcome To hero");
+client.channels.find('id', '503993147227897866').setName("W");
+client.channels.find('id', '503993147227897866').setName("We");
+client.channels.find('id', '503993147227897866').setName("Wel");
+client.channels.find('id', '503993147227897866').setName("Welc");
+client.channels.find('id', '503993147227897866').setName("Welco");
+client.channels.find('id', '503993147227897866').setName("Welcom");
+client.channels.find('id', '503993147227897866').setName("Welcome");
+client.channels.find('id', '503993147227897866').setName("Welcome T");
+client.channels.find('id', '503993147227897866').setName("Welcome To");
+client.channels.find('id', '503993147227897866').setName("Welcome To H");
+client.channels.find('id', '503993147227897866').setName("Welcome To he");
+client.channels.find('id', '503993147227897866').setName("Welcome To her");
+client.channels.find('id', '503993147227897866').setName("Welcome To hero");
+client.channels.find('id', '503993147227897866').setName("Welcome To hero");
   }, 3000);
 });
-
-
-
-
-
-
-
-
 
 
 
