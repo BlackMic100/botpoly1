@@ -45,8 +45,8 @@ client.on('ready', () => {
 
 
   client.on('message', msg => {//msg
-    if (msg.content === '=color') {
-      msg.channel.send({file : "https://cdn.discordapp.com/attachments/470638175254216716/482679181553958922/1535149909407.png"})
+    if (msg.content === 'الوان') {
+      msg.channel.send({file : "https://cdn.discordapp.com/attachments/480322603450630144/505261287228440576/color.png"})
     }
   });;
 
