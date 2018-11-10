@@ -806,33 +806,44 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 
 
 
-client.on('message', function(message) {
-    if(!message.channel.guild) return;
-    if(message.content === 'انشاء لون') {
-    if(message.member.hasPermission('MANAGE_ROLES')) {
-    setInterval(function(){})
-    message.channel.send('يتم انشاء 200 لون انتضر | ▶️')
-    }else{
-    message.channel.send('ما معاك البرمشن المطلوب |❌🚫')
-    }
-    }
-    });
-    
-    client.on('message', message=>{
-    if (message.content === 'colors create'){
-    if(!message.channel.guild) return;
-    if (message.member.hasPermission('MANAGE_ROLES')){
-    setInterval(function(){})
-    let count = 0;
-    let ecount = 0;
-    for(let x = 1; x < 200; x++){
-    message.guild.createRole({name:x,
-    color: 'RANDOM'})
-    }
-    }
-    }
-    });
+client.on('message', ( message ) => {
+  if(message.author.bot) return;
 
+  if(message.channel.id !== '510701979635286026') return;
+
+
+  let types = [
+    'jpg',
+    'jpeg',
+    'png'
+  ]
+
+  if (message.attachments.size <= 0) {
+    message.delete();
+    message.channel.send(`${message.author}, This channel for Pic 🖼️ Only`) // 
+    .then(msg => {
+      setTimeout(() => {
+        msg.delete();
+      }, 5000)
+  })
+  return;
+}
+
+  if(message.attachments.size >= 1) {
+    let filename = message.attachments.first().filename
+    console.log(filename);
+    if(!types.some( type => filename.endsWith(type) )) {
+      message.delete();
+      message.channel.send(`${message.author}, This channel for Pic 🖼️ Only`)
+      .then(msg => {
+        setTimeout(() => {
+          msg.delete();
+        }, 5000)
+      })
+    }
+  }
+
+});
 
 
 
