@@ -1084,7 +1084,7 @@ M.react('🇪🇬').then(() => M.react('🇪🇬'))
 
 
 
-
+الع
 
 
 
@@ -1133,7 +1133,7 @@ message.author.sendEmbed(embed)
 
 
 client.on('message', message => {
-     if (message.content === "اوامر") {
+     if (message.content === "العيد الوطني 48","اوامر") {
      let embed = new Discord.RichEmbed()
   .setAuthor(message.author.username)
   .setColor("#9B59B6")
